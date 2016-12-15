@@ -14,13 +14,16 @@ var queueMethods = {
     this.storage[this.objectSize] = value;
   },
   dequeue: function(){
-    var dequeued = this.storage["1"];
-    delete this.storage["1"];
-    this.objectSize--;
-    for(var key in this.storage){
-      this.storage[key - 1] = this.storage[key];
+    if(Object.keys(this.storage).length > 0){
+      var dequeued = this.storage["1"];
+      delete this.storage["1"];
+      for(var key in this.storage){
+        this.storage[key - 1] = this.storage[key];
+      }
+      delete this.storage[this.objectSize];
+      this.objectSize--;
+      return dequeued;
     }
-    return dequeued;
   },
   size: function(){
     if(this.objectSize < 0){

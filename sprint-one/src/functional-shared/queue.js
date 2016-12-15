@@ -11,19 +11,19 @@ var queueMethods = {
     this.objectSize++;
     this.storage[this.objectSize] = value;
   },
-  dequeue: function() { // {1: 2, 2: 3} ----> {0:2, 1:3}
-    var popped = this.storage["1"];
-    for(var key in this.storage) {
-      this.storage[key - 1] = this.storage[key];
+  dequeue: function() {
+    if(Object.keys(this.storage).length > 0){
+      var popped = this.storage["1"];
+      delete this.storage['1'];
+      for(var key in this.storage) {
+        this.storage[key - 1] = this.storage[key];
+      }
+      delete this.storage[this.objectSize];
+      this.objectSize--;
+      return popped;
     }
-    delete this.storage['0'];
-    this.objectSize--;
-    return popped;
   },
   size: function() {
-    if(this.objectSize < 0) {
-      return 0;
-    }
     return this.objectSize;
   }
 };
