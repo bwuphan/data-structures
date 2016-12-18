@@ -18,14 +18,21 @@ treeMethods.addChild = function(value) {
 
 treeMethods.contains = function(target) {
   var boolean = false;
+  //var counter = 0;
   function traverseTree(node){
+    //counter++;
+    //console.log(counter);
     if(node.value === target) {
       boolean = true;
       return boolean;
     }
     for(var i = 0 ; i < node.children.length; i++) {
-      traverseTree(node.children[i])
+      traverseTree(node.children[i]);
+      if(boolean) {
+        break;
+      }
     }
+
   }
   //
   traverseTree(this)
@@ -60,4 +67,5 @@ treeMethods.contains = function(target) {
 */
 /*
  * Complexity: What is the time complexity of the above functions?
+ add is constant time, contains is linear time
  */

@@ -68,4 +68,13 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('hasEdge should always work in both directions', function(){
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.addEdge(3, 2);
+    expect(graph.hasEdge(3, 2)).to.equal(true);
+    expect(graph.hasEdge(2, 3)).to.equal(true);
+  })
 });

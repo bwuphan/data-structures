@@ -47,6 +47,13 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should not overwrite existing tuples with the same value', function(){
+    hashTable.insert('Bob', 'Loblaw');
+    hashTable.insert('Rob', 'Loblaw');
+    expect(hashTable.retrieve('Bob')).to.equal('Loblaw');
+    expect(hashTable.retrieve('Rob')).to.equal('Loblaw');
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

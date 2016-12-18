@@ -20,6 +20,8 @@ var Queue = function() {
       storage[key - 1] = storage[key];
     }
     delete storage[Object.keys(storage).length - 1];
+    console.log(storage)
+    console.log("popped " + popped);
     return popped;
   };
 

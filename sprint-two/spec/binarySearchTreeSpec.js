@@ -36,4 +36,10 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+
+  it('should not throw errors when running contains', function(){
+    binarySearchTree.insert(3);
+    expect(binarySearchTree.contains(7)).to.equal(false);
+  });
+
 });

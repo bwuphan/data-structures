@@ -24,4 +24,9 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not contain values that were not added', function() {
+    set.add('Mel Gibson');
+    expect(set.contains('Braveheart')).to.equal(false);
+  })
+
 });
